@@ -1,0 +1,45 @@
+[flake8]
+indent-size = 2
+# max-line-length = 80
+max-line-length = 248
+
+exclude =
+    .git,
+    .venv,
+    venv,
+    .vscode,
+    __pycache__,
+    .mypy_cache,
+    .pytest_cache,
+    docs/source/conf.py,
+    old,
+    build,
+    dist,
+    develop-eggs,
+    downloads,
+    eggs,
+    .eggs,
+    lib,
+    lib64,
+    parts,
+    sdist,
+    var,
+    wheels,
+    share/python-wheels,
+    *.egg-info
+
+ignore =
+    # 'toml' imported but unused
+    F401,
+    # closing bracket does not match visual indentation
+    E124,
+    # continuation line over-indented for hanging indent
+    E126,
+    # visually indented line with same indent as next logical line,
+    E129,
+    # line too long
+    # E501
+    # line break before binary operator
+    W503,
+    # line break after binary operator
+    W504

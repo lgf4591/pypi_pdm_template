@@ -1,0 +1,44 @@
+[project]
+name = "pypi_pdm_template"
+version = "0.1.0"
+description = "a template for build python package to upload pypi repository bu using pdm"
+authors = [
+    {name = "lgf4591", email = "lgf4591@outlook.com"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+venv.cmd = "pdm venv activate"
+_.env_file = ".env"  # 把这个环境变量的文件不仅限于某个命令，而是 pdm run 全局
+# start.env_file = ".env"  # 把这个环境变量的文件仅限于start这个命令
+start.cmd = "python main.py"
+# start.cmd = "flask run -p 54321"
+# start = {cmd = [
+#     "flask",
+#     "run",
+#     # Important comment here about always using port 54321
+#     "-p", "54321"
+# ]}
+lint.cmd = "python -m flake8"
+fix.cmd = "yapf -ir main.py ./tests ./pypi_pdm_template"
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=7.4.3",
+]
+lint = [
+    "flake8>=6.1.0",
+    "mypy>=1.7.0",
+    "pylint>=3.0.2",
+]
+format = [
+    "isort>=5.12.0",
+    "black>=23.11.0",
+    "yapf>=0.40.2",
+]
+docs = [
+    "mkdocs>=1.5.3",
+]

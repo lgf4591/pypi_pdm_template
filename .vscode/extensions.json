@@ -1,0 +1,20 @@
+{
+    "recommendations": [
+        "vscode-icons-team.vscode-icons",
+        "dangmai.workspace-default-settings",
+        "eamodio.gitlens",
+        "eeyore.yapf",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "ms-python.mypy-type-checker",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.powershell",
+    ],
+    // These are remarked as extenstions you should disable for this workspace.
+    // VSCode does not support disabling extensions via workspace config files.
+    "unwantedRecommendations": [
+        "ms-python.black-formatter",
+        "ms-python.pylint"
+    ]
+}

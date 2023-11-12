@@ -11,8 +11,12 @@ pip install pdm --upgrade
 pipx install pdm --upgrade
 
 pdm init
-pdm config --local  pypi.url https://pypi.tuna.tsinghua.edu.cn/simple
+pdm config --local  pypi.url "https://pypi.tuna.tsinghua.edu.cn/simple"
+# pdm config --local pypi.url "https://test.pypi.org/simple"
 # pdm config pypi.url https://pypi.tuna.tsinghua.edu.cn/simple
+# pdm config pypi.extra.url "https://extra.pypi.org/simple"
+pdm config --local pypi.extra.url "https://test.pypi.org/simple"
+
 pdm add -dG test pytest pytest-cov
 pdm add -dG lint pylint flake8 mypy
 pdm add -dG format yapf isort black
@@ -36,6 +40,24 @@ pdm update -G format -G docs
 
 pdm update -G format yapf
 
+
+
+```
+
+
+## publish package
+
+```powershell
+config_path: "C:\Users\lgf\AppData\Local\pdm\pdm\config.toml"
+
+pdm config repository.pypi.username "__token__"
+pdm config repository.pypi.password "my-pypi-token"
+
+pdm config repository.testpypi.username "__token__"
+pdm config repository.testpypi.password "my-pypi-token"
+
+pdm config repository.company.url "https://pypi.company.org/legacy/"
+pdm config repository.company.ca_certs "/path/to/custom-cacerts.pem"
 
 
 ```

@@ -60,6 +60,7 @@ publish:
 release:
 	git add .
 	git commit -m "release v$(version)"
+	git push
 	git tag v$(version) -m "release v$(version)"
 	git push origin v$(version)
 

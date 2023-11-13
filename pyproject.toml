@@ -1,6 +1,6 @@
 [project]
 name = "pypi_pdm_template"
-version = "0.1.2"
+version = "0.1.3"
 description = "a template for build python package to upload pypi repository bu using pdm"
 authors = [
     {name = "lgf4591", email = "lgf4591@outlook.com"},

@@ -1,65 +1,48 @@
+.ONESHELL:
+.SHELLFLAGS := -c
+
+clean_dirs = build dist __pycache__ pypi_pdm_template.egg-info .pdm-build .pytest_cache .mypy_cache
+
 ifeq ($(OS), Windows_NT)
-run:
-	python main.py
-
-install: pyproject.toml
-	pdm install
-
-lint:
-	python -m flake8
-
-fix:
-	python -m yapf -ir main.py ./tests ./pypi_pdm_template
-
-test:
-	python -m pytest
-
-build:
-	pdm build
-
-publish:
-	pdm publish
+SHELL = cmd
+python_exec = python
 
 .PHONY: clean
 clean:
-	if exist "./build" rd /s /q build
-	if exist "./dist" rd /s /q dist
-	if exist "./.pdm-build" rd /s /q .pdm-build
-	if exist "./__pycache__" rd /s /q __pycache__
-	if exist "./.pytest_cache" rd /s /q .pytest_cache
-	if exist "./.mypy_cache" rd /s /q .mypy_cache
-	if exist "./pypi_pdm_template.egg-info" rd /s /q pypi_pdm_template.egg-info
+	for %%dir in ($(clean_dirs)) do ( if exist %%dir rd /s /q %%dir )
 
 else
+SHELL = bash
+python_exec = python3
+
+.PHONY: clean
+clean:
+	for dir in $(clean_dirs); do \
+		rm -rf $$dir; \
+	done
+
+endif
+
+
+
 run:
-	python3 main.py
+	@echo this is $(OS) system, the shell is $(SHELL).
+	$(python_exec) main.py
+
+lint:
+	$(python_exec) -m flake8
+
+fix:
+	$(python_exec) -m yapf -ir main.py ./tests ./pypi_pdm_template
+
+test:
+	$(python_exec) -m pytest
 
 install: pyproject.toml
 	pdm install
-
-lint:
-	python3 -m flake8
-
-fix:
-	python3 -m yapf -ir main.py ./tests ./pypi_pdm_template
-
-test:
-	python3 -m pytest
 
 build:
 	pdm build
 
 publish:
 	pdm publish
-
-.PHONY: clean
-clean:
-	rm -rf build
-	rm -rf dist
-	rm -rf .pdm-build
-	rm -rf __pycache__
-	rm -rf .pytest_cache
-	rm -rf .mypy_cache
-	rm -rf pypi_pdm_template.egg-info
-
-endif

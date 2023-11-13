@@ -10,6 +10,7 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-vscode.powershell",
+        "ms-vscode.makefile-tools",
     ],
     // These are remarked as extenstions you should disable for this workspace.
     // VSCode does not support disabling extensions via workspace config files.

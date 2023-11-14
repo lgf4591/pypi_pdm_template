@@ -106,5 +106,5 @@ git:
 	git push origin v$(version)
 
 
-all: clean lint fix test publish clean
-release: clean lint fix test git
+all: clean check lint fix test publish clean
+release: clean check lint fix test git
